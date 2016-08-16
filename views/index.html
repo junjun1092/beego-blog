@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微博首页</title>
+<style>
+    #clearfix li{
+        list-style-type: none;
+        float: left;
+    }
+   #clearfix .parting{
+       padding:20px;
+    }
+    #menuid li{
+        list-style-type:none;
+        float: right;
+    }
+    #menu{
+        margin-bottom: 100px;
+    }
+</style>
+</head>
+<body>
+
+<div style="float: right;border: 1px solid red" id="menuid" >
+   <ul>
+       <li>
+           <a href="/login">登陆</a>
+       </li>
+        <li>
+            <a href="/logout" style="display: block">退出</a>
+        </li>
+    </ul>
+</div>
+
+<div id="menu">
+    <ul id="clearfix">
+        <li><a href="http://blog.csdn.net/" target="_blank" >首页</a></li>
+        <li class="parting"></li>
+        <li><a href="http://blog.csdn.net/column.html" target="_blank">博客专栏</a></li>
+        <li class="parting"></li>
+        <li><a href="http://blog.csdn.net/experts.html">博客专家</a></li>
+        <li class="parting"></li>
+        <li><a href="http://blog.csdn.net/hot.html">热门文章</a></li>
+        <li class="parting"></li>
+        <li><a href="http://blog.csdn.net/ranking.html">排行榜</a></li>
+        <li class="parting"></li>
+        <li><a href="http://write.blog.csdn.net">我的博客</a></li>
+    </ul>
+</div>
+</body>
+</html>
