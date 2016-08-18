@@ -10,19 +10,21 @@
             var name = $("name").val();
             var password = $("password").val();
             var email = $("emial").val();
-            $.ajax("/Regist", {userName:userName,name:name,password:password,emial:emial}, function () {
+            alert("123");
+            $.ajax("/DoRegist", {userName:userName,name:name,password:password,emial:emial}, function () {
 
             });
+            $("#formId").submit();
         }
     </script>
 </head>
 <body>
     <div>
-        <form>
-            用户名：<input name="user.userName" id="userName" type="text"/>
-            昵&nbsp;称：<input name="name" id="name" type="text"/>
-            密&nbsp;码：<input name="password" id="password" type="text"/>
-            邮&nbsp;箱：<input name="emial" type="text" id="email"/>
+        <form id="formId">
+            用户名：<input name="userName" id="userName" type="text"/><br/>
+            昵&nbsp;称：<input name="name" id="name" type="text"/><br/>
+            密&nbsp;码：<input name="password" id="password" type="text"/><br/>
+            邮&nbsp;箱：<input name="emial" type="text" id="email"/><br/>
             <input type="submit" value="提交" onclick="confirm()"/>
         </form>
     </div>

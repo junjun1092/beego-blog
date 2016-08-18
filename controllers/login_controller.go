@@ -11,7 +11,7 @@ func(this *LoginController) Login(){
 }
 func (this *LoginController) DoLogin(){
 	name := this.GetString("userName")
-	fmt.Print("name:" + name)
+	fmt.Println("name:" + name)
 	if name == "" {
 		this.Ctx.WriteString("userName is empty")
 		return
