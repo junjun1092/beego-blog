@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/static/js/jquery-1.11.1.js"></script>
+    <script>
+        function confirm() {
+            var userName = $("userName").val();
+            var name = $("name").val();
+            var password = $("password").val();
+            var email = $("emial").val();
+            $.ajax("/Regist", {userName:userName,name:name,password:password,emial:emial}, function () {
+
+            });
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <form>
+            用户名：<input name="user.userName" id="userName" type="text"/>
+            昵&nbsp;称：<input name="name" id="name" type="text"/>
+            密&nbsp;码：<input name="password" id="password" type="text"/>
+            邮&nbsp;箱：<input name="emial" type="text" id="email"/>
+            <input type="submit" value="提交" onclick="confirm()"/>
+        </form>
+    </div>
+</body>
+</html>
