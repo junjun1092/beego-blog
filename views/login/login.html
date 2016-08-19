@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>登陆</title>
     <script type="text/javascript" src="/static/js/jquery-1.11.1.js"></script>
     <script type="text/javascript">
         function login()
@@ -19,7 +19,7 @@
 //               // return false;
 //            }
             $.ajax({
-                url:"LoginController.doLogin",
+                url:"LoginController.DoLogin",
                 type:"post",
                 dataType:"json",
                 data:{name:name,password:password},

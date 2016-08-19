@@ -5,28 +5,32 @@ import (
        // "github.com/astaxie/beego/orm"
         "beego-blog/models"
         "fmt"
+        "github.com/astaxie/beego/orm"
 )
 
 type RegistController struct{
 	beego.Controller
 }
 
-func (this *RegistController) Get(){
+func (this *RegistController) ToRegist(){
 	this.TplName = "regist/regist.html"
 }
 
 func (this *RegistController) DoRegist(){
-        fmt.Println("123")
         userName := this.GetString("userName")
         name := this.GetString("name")
         password := this.GetString("password")
         email := this.GetString("email")
-       // o := orm.NewOrm()
+        orm.Debug = true
+        o := orm.NewOrm()
+        o.Using("beego")
         user := new(models.User)
+        user.Id = 1
         user.UserName = userName
         user.Name = name
         user.Password = password
         user.Email = email
-       // o.Insert(user)
-        this.Ctx.WriteString("注册成功")
+
+       fmt.Println(o.Insert(user))
+        this.Ctx.WriteString("注册成功12")
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>注册</title>
     <script type="text/javascript" src="/static/js/jquery-1.11.1.js"></script>
     <script>
         function confirm() {
@@ -11,16 +11,21 @@
             var password = $("password").val();
             var email = $("emial").val();
             alert("123");
-            $.ajax("/DoRegist", {userName:userName,name:name,password:password,emial:emial}, function () {
-
+            $.ajax({
+                    url:"RegistController.DoRegist",
+                    type:"post",
+                    dataType:"json",
+                    data:{userName:userName,name:name,password:password,emial:emial},
+                    success:function (msg) {
+                        alert(msg);
+                    }
             });
-            $("#formId").submit();
         }
     </script>
 </head>
 <body>
     <div>
-        <form id="formId">
+        <form id="formId" method="post">
             用户名：<input name="userName" id="userName" type="text"/><br/>
             昵&nbsp;称：<input name="name" id="name" type="text"/><br/>
             密&nbsp;码：<input name="password" id="password" type="text"/><br/>
