@@ -2,6 +2,7 @@ package models
 
 import ("github.com/astaxie/beego/orm"
         _ "github.com/go-sql-driver/mysql"
+
 )
 
 
@@ -19,5 +20,11 @@ func RegisterDB(){
         //注册驱动
         orm.RegisterDriver("mysql",orm.DRMySQL)
         //注册默认数据库
-        orm.RegisterDataBase("beego","mysql","root:@localhost/beego?charset=utf8")
+        orm.RegisterDataBase("default","mysql","root:@/beego?charset=utf8")
+        orm.RunSyncdb("default", false, true)
 }
+
+//func init()  {
+//       orm.RegisterModel(new (User))
+//        fmt.Println("regist user")
+//}
