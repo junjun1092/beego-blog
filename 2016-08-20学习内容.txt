@@ -1,0 +1,29 @@
+如何使用golang UnitTest进行测试，
+golang单元测试对文件名有和方法名，参数都有严格的要求
+文件名必须是以xx_test.go命名
+方法名必须是Test[^a-z开头]
+方法参数必须是t *testing.T
+
+现在测试能够进行建表操作，能使用默认数据库beego，但是插入有问题
+
+没有明白几点：
+1 如何找到数据库的，我的数据库名是beego，代码中没有相关的，只是写了default，
+自己现在的理解是，beego在连mysql自动找的，但是为什么不找test
+2 执行insert报错o.Insert(user)，
+Test framework quit unexpectedly
+
+
+注意一点，默认建表的名字是和models中struct的名字是一样的
+建表语句
+create table `user`
+        -- --------------------------------------------------
+        --  Table Structure for `beego-blog/models.User`
+        -- --------------------------------------------------
+        CREATE TABLE IF NOT EXISTS `user` (
+            `id` integer AUTO_INCREMENT NOT NULL PRIMARY KEY,
+            `user_name` varchar(255) NOT NULL DEFAULT '' ,
+            `name` varchar(255) NOT NULL DEFAULT '' ,
+            `password` varchar(255) NOT NULL DEFAULT '' ,
+            `email` varchar(255) NOT NULL DEFAULT ''
+        ) ENGINE=InnoDB;
+ user只能注册一次，也就是orm.RegisterModel(new (User))这句话只执行一次
