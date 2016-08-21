@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>登陆</title>
+    <style>
+        #showMsg{
+            display: none;
+        }
+    </style>
     <script type="text/javascript" src="/static/js/jquery-1.11.1.js"></script>
     <script type="text/javascript">
         function login()
         {
             var name = $("#userName").val()
             var password = $("#password").val()
-//            if (name.length == 0) {
-//                $("#err .header").html("username is blank");
-//               // return false;
-//            }
-//
-//            if (password.length == 0) {
-//                $("#err .header").html("password is blank");
-//               // return false;
-//            }
-            $.ajax({
-                url:"LoginController.DoLogin",
-                type:"post",
+            if (name.length == 0) {
+                $("#showMsg").css("display", "block")
+                $("#showMsg").html("username is blank");
+               return false;
+            }
+            if (password.length == 0) {
+                $("#showMsg").css("display", "block")
+                $("#showMsg").html("password is blank");
+                return false;
+            }
+            $.post({
+                url:"/login",
                 dataType:"json",
                 data:{name:name,password:password},
                 success:function (result) {
@@ -33,20 +38,19 @@
                     }
                 }
             });
+            $("#userForm").submit();
         }
 
     </script>
 </head>
 <body>
-<form id="user" method="post">
+<form id="userForm" method="post">
     <div>
         用户名：<input name="userName" type="text" id="userName"/><br/>
         密&nbsp;码：<input name="password" type="text" id="password"/>
     </div>
-    <div class="ui error message" id="err">
-        <div class="header"></div>
-    </div>
-    <input type="submit" value="提交"/>
+    <span class="msg" id="showMsg" style="color: red"></span>
+    <input type="button" value="提交" onclick="login()"/>
 </form>
 </body>
 </html>

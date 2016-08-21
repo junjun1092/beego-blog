@@ -4,7 +4,6 @@ import (
         "github.com/astaxie/beego"
        // "github.com/astaxie/beego/orm"
         "beego-blog/models"
-        "fmt"
         "github.com/astaxie/beego/orm"
 )
 
@@ -22,8 +21,8 @@ func (this *RegistController) DoRegist(){
         password := this.GetString("password")
         email := this.GetString("email")
         orm.Debug = true
-        o := orm.NewOrm()
-        o.Using("beego")
+        //o := orm.NewOrm()
+        //o.Using("beego")
         user := new(models.User)
         user.Id = 1
         user.UserName = userName
@@ -31,6 +30,6 @@ func (this *RegistController) DoRegist(){
         user.Password = password
         user.Email = email
 
-       fmt.Println(o.Insert(user))
+    //   fmt.Println(o.Insert(user))
         this.Ctx.WriteString("注册成功12")
 }

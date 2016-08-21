@@ -1,8 +1,7 @@
 package controllers
 import (
 	"github.com/astaxie/beego"
-	"fmt"
-        "net/http"
+        "fmt"
 )
 type LoginController struct{
 	beego.Controller
@@ -10,9 +9,9 @@ type LoginController struct{
 func(this *LoginController) Login(){
 	this.TplName = "login/login.html"
 }
-func (this *LoginController) DoLogin(w http.ResponseWriter, r *http.Request){
+func (this *LoginController) DoLogin(){
 	name := this.GetString("userName")
-	fmt.Println("name:" + name)
+        fmt.Println("name:" + name)
 	if name == "" {
 		this.Ctx.WriteString("userName is empty")
 		return
@@ -24,7 +23,9 @@ func (this *LoginController) DoLogin(w http.ResponseWriter, r *http.Request){
 	}
 	this.Ctx.SetCookie("bb_name",name,2592000,"/")
 	this.Ctx.ResponseWriter.Header().Add("Set-Cookie","bb_password=" + password + "; Max-Age=2592000;Path=/;httponly")
-	this.Ctx.WriteString("登陆成功12")
+	//this.Data["json"] =
+	//this.ServeJSON()
+        this.Ctx.WriteString("登陆成功12")
 
 }
 func (this *LoginController) Logout(){
