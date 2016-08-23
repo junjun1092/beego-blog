@@ -12,5 +12,5 @@ func init() {
 	beego.Router("/login", &controllers.LoginController{}, "get:Login;post:DoLogin")
 	beego.Router("/logout",&controllers.LoginController{},"get:Logout")
 	beego.Router("/toRegist",&controllers.RegistController{}, "get:ToRegist;post:DoRegist")
-       	//beego.Router("/doRegist",&controllers.RegistController{},)
+       //	beego.Router("/doRegist",&controllers.RegistController{},)
 }
