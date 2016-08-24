@@ -24,10 +24,12 @@
                 $("#showMsg").html("password is blank");
                 return false;
             }
-            $.post({
+            $.ajax({
                 url:"/login",
+                type:"post",
                 dataType:"json",
-                data:{name:name,password:password},
+              //  data:JSON.stringify({"name":name,"password":password}),
+                data:$("#userForm").serialize(),
                 success:function (result) {
                     if (result.length == 0) {
                         window.location.href="/";
@@ -37,19 +39,19 @@
                     }
                 }
             });
-            $("#userForm").submit();
+           // $("#userForm").submit();
         }
 
     </script>
 </head>
 <body>
-<form id="userForm" method="post">
+<form id="userForm">
     <div>
         用户名：<input name="userName" type="text" id="userName"/><br/>
         密&nbsp;码：<input name="password" type="text" id="password"/>
     </div>
     <span class="msg" id="showMsg" style="color: red"></span>
-    <input type="button" value="提交" onclick="login()"/>
 </form>
+<input type="button" value="提交" onclick="login()"/>
 </body>
 </html>

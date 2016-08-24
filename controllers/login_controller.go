@@ -3,6 +3,7 @@ import (
 	"github.com/astaxie/beego"
         "github.com/astaxie/beego/orm"
         "beego-blog/models"
+        "fmt"
 )
 type LoginController struct{
 	beego.Controller
@@ -11,16 +12,18 @@ func(this *LoginController) Login(){
 	this.TplName = "login/login.html"
 }
 func (this *LoginController) DoLogin(){
-	name := this.GetString("userName")
+        name := this.GetString("userName")
+        fmt.Println("name:" + name)
 	if name == "" {
-		this.Ctx.WriteString("userName is empty")
+		fmt.Println( "userName is empty")
 		return
 	}
 	password:= this.GetString("password")
 	if password == ""{
-		this.Ctx.WriteString("password is empty")
+		fmt.Println("password is empty")
 		return
 	}
+        fmt.Println("dologin")
         models.RegisterDB()
         o := orm.NewOrm()
         o.Using("beego")
@@ -28,13 +31,13 @@ func (this *LoginController) DoLogin(){
         user.UserName = name
         err := o.Read(user, "UserName")
         if err == orm.ErrNoRows {
-	      this.Ctx.WriteString("没有查到相应的用户")
+	      //JSON.("没有查到相应的用户")
         }else {
 	      pass := user.Password
 	      if password == pass {
-		    this.Ctx.WriteString("登陆成功")
+		   fmt.Println("登陆成功")
 	      }else {
-		    this.Ctx.WriteString("密码错误")
+		  fmt.Println("密码错误")
 	      }
         }
 	this.Ctx.SetCookie("bb_name",name,2592000,"/")
