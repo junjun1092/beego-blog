@@ -2,7 +2,6 @@ package controllers
 
 import (
         "github.com/astaxie/beego"
-       // "github.com/astaxie/beego/orm"
         "beego-blog/models"
         "github.com/astaxie/beego/orm"
         "fmt"
@@ -26,14 +25,16 @@ func (this *RegistController) DoRegist(){
         o := orm.NewOrm()
         o.Using("beego")
         user := new(models.User)
-        user.Id = 1
         user.UserName = userName
         user.Name = name
         user.Password = password
         user.Email = email
         id,err:= o.Insert(user)
-        if err != nil {
+        fmt.Println(err)
+        if err == nil {
                 fmt.Println(id)
         }
-        this.Ctx.WriteString("注册成功12")
+        this.Data["json"] = map[string]interface{}{"success":0,"message":"注册成功"}
+        this.ServeJSON()
+        return
 }

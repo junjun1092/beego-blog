@@ -24,13 +24,16 @@ func RegisterDB(){
         orm.RegisterDriver("mysql",orm.DRMySQL)
         //注册默认数据库root:@/test?charset=utf8，密码为空格式
         orm.RegisterDataBase("default","mysql",mysqluser + ":@/" + mysqldb + "?charset=utf8")
+        orm.RegisterModelWithPrefix("blog_", new (User))
         fmt.Println("连接成功")
         //注册model
         //orm.RegisterModel(new (User))
 
         orm.RunSyncdb("default", false, true)
+
 }
 
-func init()  {
-       orm.RegisterModel(new (User))
-}
+//func init()  {
+//        fmt.Println("3")
+//       orm.RegisterModel(new (User))
+//}

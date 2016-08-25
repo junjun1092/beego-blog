@@ -6,17 +6,20 @@
     <script type="text/javascript" src="/static/js/jquery-1.11.1.js"></script>
     <script>
         function confirm() {
-            var userName = $("userName").val();
-            var name = $("name").val();
-            var password = $("password").val();
-            var email = $("emial").val();
+           alert("123");
             $.ajax({
                     url:"/toRegist",
                     type:"post",
                     dataType:"json",
-                    data:{userName:userName,name:name,password:password,emial:emial},
-                    success:function (msg) {
-                        alert(msg);
+                    data:$("#registForm").serialize(),
+                    success:function (data) {
+                        if (data.success == 0){
+                            alert(data.message)
+                            window.location.href = "/login"
+                        }
+                        else{
+                            alert(data.message)
+                        }
                     }
             });
         }
@@ -24,13 +27,14 @@
 </head>
 <body>
     <div>
-        <form id="formId" method="post">
+        <form id="registForm">
             用户名：<input name="userName" id="userName" type="text"/><br/>
             昵&nbsp;称：<input name="name" id="name" type="text"/><br/>
             密&nbsp;码：<input name="password" id="password" type="text"/><br/>
             邮&nbsp;箱：<input name="email" type="text" id="email"/><br/>
-            <input type="submit" value="提交" onclick="confirm()"/>
         </form>
+        <span id="registMsg" style="color: red;"></span>
+        <input type="submit" value="提交" onclick="confirm()"/>
     </div>
 </body>
 </html>

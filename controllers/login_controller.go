@@ -31,13 +31,18 @@ func (this *LoginController) DoLogin(){
         user.UserName = name
         err := o.Read(user, "UserName")
         if err == orm.ErrNoRows {
-	      //JSON.("没有查到相应的用户")
+	      this.Data["json"] = map[string]interface{}{"success":1,"message":"没有查到相应的用户"}
         }else {
 	      pass := user.Password
+	      fmt.Println(pass)
 	      if password == pass {
-		   fmt.Println("登陆成功")
+		    this.Data["json"] = map[string]interface{}{"success":0,"message":"登陆成功"}
+		    this.ServeJSON()
+		    return
 	      }else {
-		  fmt.Println("密码错误")
+		    this.Data["json"] = map[string]interface{}{"success":1,"message":"密码错误"}
+		    this.ServeJSON()
+		    return
 	      }
         }
 	this.Ctx.SetCookie("bb_name",name,2592000,"/")

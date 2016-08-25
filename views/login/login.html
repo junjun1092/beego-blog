@@ -31,10 +31,10 @@
               //  data:JSON.stringify({"name":name,"password":password}),
                 data:$("#userForm").serialize(),
                 success:function (result) {
-                    if (result.length == 0) {
+                    if (result.success == 0) {
                         window.location.href="/";
                     } else {
-                        $("#err .header").html(data);
+                        $("#err .header").html(result.message);
                         $("#err").show("fast");
                     }
                 }
