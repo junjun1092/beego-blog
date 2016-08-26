@@ -1,52 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>微博首页</title>
-<style>
-    #clearfix li{
-        list-style-type: none;
-        float: left;
-    }
-   #clearfix .parting{
-       padding:20px;
-    }
-    #menuid li{
-        list-style-type:none;
-        float: right;
-    }
-</style>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>微博首页</title>
+    <style>
+        #clearfix li{
+            list-style-type: none;
+            float: left;
+        }
+       #clearfix .parting{
+           padding:30px;
+        }
+        #menuid li{
+            list-style-type:none;
+            float: right;
+        }
+    </style>
+    </head>
+    <body>
 
-<div style="float: right;border: 1px solid red;width: 100%; height: 50px; margin-bottom: 20px; background-image: url('../static/img/cloud.jpg')" id="menuid" >
-   <ul style="color: red; font-weight: bold">
-       <li>
-           <a href="/login">登陆</a>
-       </li>
-        <li>
-            <a href="/logout" style="display: block">退出&nbsp;</a>
-        </li>
-       <li>
-           <a href="/toRegist" style="display: block">注册&nbsp;</a>
-       </li>
-    </ul>
-</div>
+        <div style="float: right;border: 1px solid red;width: 100%; height: 50px; margin-bottom: 20px; background-image: url('../static/img/cloud.jpg')" id="menuid" >
+           <ul style="color: red; font-weight: bold">
+               <li>
+                   <a href="/login">登陆</a>
+               </li>
+                <li>
+                    <a href="/logout" style="display: block">退出&nbsp;</a>
+                </li>
+               <li>
+                   <a href="/toRegist" style="display: block">注册&nbsp;</a>
+               </li>
+            </ul>
+        </div>
 
-<div id="menu">
-    <ul id="clearfix">
-        <li><a href="http://blog.csdn.net/" target="_blank" >首页</a></li>
-        <li class="parting"></li>
-        <li><a href="http://blog.csdn.net/column.html" target="_blank">博客专栏</a></li>
-        <li class="parting"></li>
-        <li><a href="http://blog.csdn.net/experts.html">博客专家</a></li>
-        <li class="parting"></li>
-        <li><a href="http://blog.csdn.net/hot.html">热门文章</a></li>
-        <li class="parting"></li>
-        <li><a href="http://blog.csdn.net/ranking.html">排行榜</a></li>
-        <li class="parting"></li>
-        <li><a href="http://write.blog.csdn.net">我的博客</a></li>
-    </ul>
-</div>
-</body>
+        <div id="menu" style="border: 1px solid aliceblue; width: 100%;height: 100px">
+            <ul id="clearfix">
+                <li><a href="http://blog.csdn.net/" target="_blank" >首页</a></li>
+                <li class="parting"></li>
+                <li><a href="http://blog.csdn.net/column.html" target="_blank">博客专栏</a></li>
+                <li class="parting"></li>
+                <li><a href="http://blog.csdn.net/experts.html">博客专家</a></li>
+                <li class="parting"></li>
+                <li><a href="http://blog.csdn.net/hot.html">热门文章</a></li>
+                <li class="parting"></li>
+                <li><a href="http://blog.csdn.net/ranking.html">排行榜</a></li>
+                <li class="parting"></li>
+                <li><a href="http://write.blog.csdn.net">我的博客</a></li>
+            </ul>
+        </div>
+       <br/>
+        <div style="float:left">
+        <table cellpadding="10px" cellspacing="10px" >
+            <tr>
+                <td>
+                    <img src="../static/img/a1.jpg">
+                </td>
+                <td>
+                    <p><a href="http://blog.csdn.net/xmxkf/article/details/51454685">Android自定义View(一、初体验自定义TextView)</a></p>
+                    <span>转载请标明出处： http://blog.csdn.net/xmxkf/article/details/51376048 本文出自:【openXu的博客】 继承View重写onDraw...</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="../static/img/a2.jpg">
+                </td>
+                <td>
+                    <p><a href="http://blog.csdn.net/d6619309/article/details/52330133">MyCat线程模型分析</a></p>
+                    <span>参考MyCat权威指南，对MyCat-Server里面的线程模型做简要分析</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="../static/img/a3.jpg">
+                </td>
+                <td>
+                    <p><a href="http://blog.csdn.net/dingji_ping/article/details/51225128">多处理器编程的艺术（二）-并行程序设计</a></p>
+                    <span>这一系列的文章将会介绍Java中的多线程编程的处理，从原理到实践，还有需要注意的种种问题分析。第一部分我们介绍并行和并发程序的原理；第二部分介绍的是并行程序的设计；第三部分介绍并发程序的设计。 实例...</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="../static/img/a4.jpg">
+                </td>
+                <td>
+                    <p><a href="http://blog.csdn.net/dingji_ping/article/details/51225128">Anjular+Bootstrap前端开发案例实战</a></p>
+                    <span>我们将利用Angularjs 和 Bootstrap，开发一个前端应用实例，通过这一次简单的项目实战，引领大家进入AngularJS前端开发的殿堂，让大家体验到AngularJS在前端开发中的强大功能...</span>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </body>
 </html>

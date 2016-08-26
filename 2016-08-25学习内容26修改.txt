@@ -1,0 +1,31 @@
+今天在models做了测试，在User.go中添加了init方法，还有一个是注册数据库的方法;用gounit测试
+其实go连接数据库也和java用jdbc连接数据库一样的做法，把驱动，数据源配好，调用合适的方法去增删改查就可以；
+注册model，感觉就类似于创建一个对象，然后分配空间，再给对象中的属性赋值；
+
+
+今天又重新试了下注册，出现了一些问题，总说需注册model要在BootStrap之前，一开始没找到原因，问题处在注册model上，原因在于在注册数据的方法中添加了一个建表语句
+orm.RegisterModelWithPrefix("blog_", new (User))，这句话也有注册model的作用，将这句话挪到了User.go的init方法中，每次访问也会执行，但是会检查，如果表已经存在了，
+就会直接跳过建表，如果default数据库已经registered，也会直接跳过
+[ORM]DataBase alias name `default` already registered, cannot reuse
+table `blog_user` already exists, skip
+
+发现一个问题，有时候持续报一个错误之后，需要编译一下，修改个文件，编译一下之后才能反映出真正的错误来
+
+错误信息，页面会报   RegisterModel must be run before BootStrap
+
+[ORM]DataBase alias name `default` already registered, cannot reuse
+2016/08/26 23:22:49 [router.go:854][C] the request url is  /toRegist
+2016/08/26 23:22:49 [router.go:855][C] Handler crashed with error RegisterModel must be run before BootStrap
+2016/08/26 23:22:49 [router.go:861][C] D:/Go/src/runtime/asm_amd64.s:472
+2016/08/26 23:22:49 [router.go:861][C] D:/Go/src/runtime/panic.go:443
+2016/08/26 23:22:49 [router.go:861][C] F:/workspace/src/github.com/astaxie/beego/orm/models_boot.go:309
+2016/08/26 23:22:49 [router.go:861][C] F:/workspace/src/beego-blog/models/User.go:27
+2016/08/26 23:22:49 [router.go:861][C] F:/workspace/src/beego-blog/controllers/regist_controller.go:23
+2016/08/26 23:22:49 [router.go:861][C] D:/Go/src/runtime/asm_amd64.s:472
+2016/08/26 23:22:49 [router.go:861][C] D:/Go/src/reflect/value.go:435
+2016/08/26 23:22:49 [router.go:861][C] D:/Go/src/reflect/value.go:303
+2016/08/26 23:22:49 [router.go:861][C] F:/workspace/src/github.com/astaxie/beego/router.go:778
+2016/08/26 23:22:49 [router.go:861][C] D:/Go/src/net/http/server.go:2081
+2016/08/26 23:22:49 [router.go:861][C] D:/Go/src/net/http/server.go:1472
+2016/08/26 23:22:49 [router.go:861][C] D:/Go/src/runtime/asm_amd64.s:1998
+2016/08/26 23:25:05 [router.go:829][D] | GET        | /toRegist

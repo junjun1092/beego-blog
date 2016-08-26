@@ -30,7 +30,6 @@ func (this *RegistController) DoRegist(){
         user.Password = password
         user.Email = email
         id,err:= o.Insert(user)
-        fmt.Println(err)
         if err == nil {
                 fmt.Println(id)
         }

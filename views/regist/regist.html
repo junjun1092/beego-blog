@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
-    <script type="text/javascript" src="/static/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="../../static/js/jquery-1.11.1.js"></script>
     <script>
         function confirm() {
-           alert("123");
             $.ajax({
                     url:"/toRegist",
                     type:"post",
@@ -14,27 +13,30 @@
                     data:$("#registForm").serialize(),
                     success:function (data) {
                         if (data.success == 0){
-                            alert(data.message)
-                            window.location.href = "/login"
+                            $("#registMsg").html(data.message + "<a href='/login'>点击登陆</a>")
                         }
                         else{
-                            alert(data.message)
+                            $("#registMsg").html(data.message)
+                            //window.location.href = "/toRegist"
                         }
                     }
             });
+        }
+        function checkUsername() {
+
         }
     </script>
 </head>
 <body>
     <div>
         <form id="registForm">
-            用户名：<input name="userName" id="userName" type="text"/><br/>
+            用户名：<input name="userName" id="userName" type="text" onblur="checkUsername()"/><br/>
             昵&nbsp;称：<input name="name" id="name" type="text"/><br/>
-            密&nbsp;码：<input name="password" id="password" type="text"/><br/>
+            密&nbsp;码：<input name="password" id="password" type="password"/><br/>
             邮&nbsp;箱：<input name="email" type="text" id="email"/><br/>
         </form>
+        <input type="submit" value="提交" onclick="confirm()"/><br/>
         <span id="registMsg" style="color: red;"></span>
-        <input type="submit" value="提交" onclick="confirm()"/>
     </div>
 </body>
 </html>
