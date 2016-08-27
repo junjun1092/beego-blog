@@ -5,7 +5,6 @@ import (
 
         "github.com/astaxie/beego"
         "github.com/astaxie/beego/orm"
-        "fmt"
 )
 
 
@@ -24,7 +23,6 @@ func RegisterDB(){
         orm.RegisterDriver("mysql",orm.DRMySQL)
         //注册默认数据库root:@/test?charset=utf8，密码为空格式
         orm.RegisterDataBase("default","mysql",mysqluser + ":@/" + mysqldb + "?charset=utf8")
-        fmt.Println("连接成功")
         //注册model
         //orm.RegisterModel(new (User))
 

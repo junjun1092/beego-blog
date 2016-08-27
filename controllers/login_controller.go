@@ -30,16 +30,19 @@ func (this *LoginController) DoLogin(){
         user := new(models.User)
         user.UserName = name
         err := o.Read(user, "UserName")
+        fmt.Println(err)
         if err == orm.ErrNoRows {
 	      this.Data["json"] = map[string]interface{}{"success":1,"message":"没有查到相应的用户"}
+	      this.ServeJSON()
+	      return
         }else {
 	      pass := user.Password
-	      fmt.Println(pass)
 	      if password == pass {
 		    this.Data["json"] = map[string]interface{}{"success":0,"message":"登陆成功"}
 		    this.ServeJSON()
 		    return
 	      }else {
+		    fmt.Println("werrr")
 		    this.Data["json"] = map[string]interface{}{"success":1,"message":"密码错误"}
 		    this.ServeJSON()
 		    return

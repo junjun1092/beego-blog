@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>登陆</title>
-    <style>
-        #showMsg{
-            display: none;
-        }
-    </style>
-    <script type="text/javascript" src="/static/js/jquery-1.11.1.js"></script>
+
+    <script type="text/javascript" src="../../static/js/jquery-1.11.1.js"></script>
     <script type="text/javascript">
         function login()
         {
@@ -32,10 +28,11 @@
                 data:$("#userForm").serialize(),
                 success:function (result) {
                     if (result.success == 0) {
+                        alert(result.message);
                         window.location.href="/";
                     } else {
-                        $("#err .header").html(result.message);
-                        $("#err").show("fast");
+                        alert(result.message);
+                        $("#showMsg").html(result.message);
                     }
                 }
             });
@@ -50,8 +47,8 @@
         用户名：<input name="userName" type="text" id="userName"/><br/>
         密&nbsp;码：<input name="password" type="text" id="password"/>
     </div>
-    <span class="msg" id="showMsg" style="color: red"></span>
 </form>
 <input type="button" value="提交" onclick="login()"/>
+<span class="msg" id="showMsg" style="color: red"></span>
 </body>
 </html>
