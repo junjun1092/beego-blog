@@ -23,7 +23,6 @@ func (this *LoginController) DoLogin(){
 		fmt.Println("password is empty")
 		return
 	}
-        fmt.Println("dologin")
         models.RegisterDB()
         o := orm.NewOrm()
         o.Using("beego")
@@ -40,6 +39,7 @@ func (this *LoginController) DoLogin(){
 	      if password == pass {
 		    this.Data["json"] = map[string]interface{}{"success":0,"message":"登陆成功"}
 		    this.ServeJSON()
+		    beego.sess
 		    return
 	      }else {
 		    fmt.Println("werrr")
@@ -50,9 +50,6 @@ func (this *LoginController) DoLogin(){
         }
 	this.Ctx.SetCookie("bb_name",name,2592000,"/")
 	this.Ctx.ResponseWriter.Header().Add("Set-Cookie","bb_password=" + password + "; Max-Age=2592000;Path=/;httponly")
-	//this.Data["json"] =
-	//this.ServeJSON()
-        // this.Ctx.WriteString("登陆成功12")
 
 }
 func (this *LoginController) Logout(){
