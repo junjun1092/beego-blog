@@ -39,7 +39,6 @@ func (this *LoginController) DoLogin(){
 	      if password == pass {
 		    this.Data["json"] = map[string]interface{}{"success":0,"message":"登陆成功"}
 		    this.ServeJSON()
-		    beego.sess
 		    return
 	      }else {
 		    fmt.Println("werrr")
