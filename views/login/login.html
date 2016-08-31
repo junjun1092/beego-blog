@@ -28,7 +28,6 @@
                 data:$("#userForm").serialize(),
                 success:function (result) {
                     if (result.success == 0) {
-                        alert(result.message);
                         window.location.href="/";
                     } else {
                         alert(result.message);

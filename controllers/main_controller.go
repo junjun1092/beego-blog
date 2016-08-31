@@ -6,3 +6,5 @@ type MainController1 struct {
         beego.Controller
 }
 
+
+

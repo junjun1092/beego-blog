@@ -37,7 +37,8 @@ func (this *LoginController) DoLogin(){
         }else {
 	      pass := user.Password
 	      if password == pass {
-		    this.Data["json"] = map[string]interface{}{"success":0,"message":"登陆成功"}
+		    this.SetSession("name",name)
+		    this.Data["json"] = map[string]interface{}{"success":0,"message":name + "欢迎你"}
 		    this.ServeJSON()
 		    return
 	      }else {
@@ -55,5 +56,9 @@ func (this *LoginController) Logout(){
 	this.Ctx.SetCookie("bb_name", "12", 0, "/")
 	this.Ctx.ResponseWriter.Header().Add("Set-Cookie","bb_password=" + "334" + "; Max-Age=0;Path=/;httponly")
 	this.Ctx.WriteString("退出登陆112")
+}
+
+func init(){
+
 }
 
