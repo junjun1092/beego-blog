@@ -1,0 +1,8 @@
+昨天的问题解决了，是因为在go unit的测试类中弹出了一个提示，说是找不到gopath，然后点了提示操作，导致修改了环境变量中的gopath，
+因而在运行的时候找不到对应的gopath了，所以就报错
+can't load package: package beego-blog/simpleTest: cannot find package "beego-blog/simpleTest" in any of:
+
+	D:\Go\src\beego-blog\simpleTest (from $GOROOT)
+
+	E:\workspace-go\src\src\beego-blog\simpleTest (from $GOPATH);
+
