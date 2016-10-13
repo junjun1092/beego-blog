@@ -1,0 +1,19 @@
+今天学会了写mysql的定时任务，需要定时去执行一个存储过程；
+解决了bee命令无法识别的问题，但是现在还有个问题，就是从git上下载的我自己的项目，没法启动：
+$ bee run beego-blog
+______
+| ___ \
+| |_/ /  ___   ___
+| ___ \ / _ \ / _ \
+| |_/ /|  __/|  __/
+\____/  \___| \___| v1.5.2
+panic: No Beego application 'beego-blog' found in your GOPATH
+
+goroutine 1 [running]:
+panic(0x8e1500, 0xc082061c20)
+        D:/Go/src/runtime/panic.go:481 +0x3f4
+main.runApp(0xd66160, 0xc08205c020, 0x1, 0x1, 0x0)
+        F:/workspace/src/github.com/beego/bee/run.go:90 +0x1815
+main.main()
+        F:/workspace/src/github.com/beego/bee/bee.go:115 +0x37d
+目前还没找到是什么原因；
